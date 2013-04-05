@@ -238,6 +238,7 @@ ul {
 
 .share {
   @extend .section-default;
+  display: none;
 
   .share-title { @extend .section-title; }
 
@@ -248,5 +249,9 @@ ul {
     padding: em(10) em(15);
     text-decoration: none;
     cursor: pointer;
+  }
+
+  &.user-logged {
+    display: block;
   }
 }

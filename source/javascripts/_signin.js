@@ -89,6 +89,7 @@ var signin = (function() {
   var show_user_content = function() {
 
     $( '.user' ).addClass( 'user-logged' );
+    $( '.share' ).addClass( 'user-logged' );
     $( '.box-login' ).removeClass( 'not-logged' );
 
     get_my_data();
