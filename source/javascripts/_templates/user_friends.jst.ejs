@@ -1,0 +1,17 @@
+<h1>See below your friends:</h1>
+<ul>
+  <%
+  $.each(data, function( index, item ) {
+    if( item.objectType === 'person' ) {
+  %>
+      <li>
+        <figure>
+          <img src="<%= item.image.url %>" alt="">
+          <figcaption><%= item.displayName %></figcaption>
+        </figure>
+      </li>
+  <%
+    }
+  });
+  %>
+</ul>

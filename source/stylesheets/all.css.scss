@@ -1,0 +1,88 @@
+@import 'compass';
+@import 'normalize';
+
+@function em($pxval, $base: 16) {
+  @return #{$pxval / $base}em;
+}
+
+body {
+  background: #e9e9e9;
+  font-family: 'Helvetica';
+}
+
+* {
+  @include box-sizing(border-box);
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+}
+
+.box {
+  @include transition(all 300ms ease-in);
+  background: #fff;
+}
+
+.box-login {
+  @extend .box;
+  width: em(320);
+  text-align: center;
+  margin: em(40) auto;
+  display: none;
+  padding: em(30);
+
+  &:hover {
+    border-color: #ff9999;
+
+    .box-login-title {
+      color: #666;
+    }
+
+    .box-login-content {
+      color: #999;
+    }
+  }
+
+  .box-login-title {
+    @include transition(all 300ms ease-in);
+    color: #999;
+  }
+
+  .box-login-content {
+    @include transition(all 300ms ease-in);
+    color: #ccc;
+  }
+
+  #signin-button {
+    @include border-radius(5px);
+    background: #ff2222;
+    color: #fff;
+    padding: em(10) em(15);
+    cursor: pointer;
+    margin-top: em(10);
+    display: inline-block;
+  }
+
+  &.not-logged {
+    display: block;
+  }
+}
+
+.user {
+  @extend .box;
+  display: none;
+  width: em(320);
+  margin: em(40) auto;
+  padding: 0;
+
+  &.user-logged {
+    display: block;
+  }
+}
+
+.user-information {
+  width: em(320);
+  height: em(200);
+  background: #f4f4f4;
+}

@@ -1,0 +1,17 @@
+<h1>See below the pages that you follow:</h1>
+<ul>
+  <%
+  $.each(data, function( index, item ) {
+    if( item.objectType === 'page' ) {
+  %>
+      <li>
+        <figure>
+          <img src="<%= item.image.url %>" alt="">
+          <figcaption><%= item.displayName %></figcaption>
+        </figure>
+      </li>
+  <%
+    }
+  });
+  %>
+</ul>

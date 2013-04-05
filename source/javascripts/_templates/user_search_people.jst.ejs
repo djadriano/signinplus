@@ -1,0 +1,10 @@
+<ul>
+  <% $.each(data, function( index, item ) { %>
+    <li>
+      <figure>
+        <img src="<%= item.image.url %>" alt="">
+        <figcaption><a href="<%= item.url %>"><%= item.displayName %></a></figcaption>
+      </figure>
+    </li>
+  <% }); %>
+</ul>
