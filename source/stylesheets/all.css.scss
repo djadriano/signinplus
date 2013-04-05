@@ -8,6 +8,8 @@
 body {
   background: #e9e9e9;
   font-family: 'Helvetica';
+  margin: 0;
+  padding: 0;
 }
 
 * {
@@ -47,6 +49,7 @@ body {
   .box-login-title {
     @include transition(all 300ms ease-in);
     color: #999;
+    margin: 0;
   }
 
   .box-login-content {
@@ -85,4 +88,8 @@ body {
   width: em(320);
   height: em(200);
   background: #f4f4f4;
+
+  h1 {
+    margin: 0;
+  }
 }
