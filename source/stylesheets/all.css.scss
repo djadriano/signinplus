@@ -86,7 +86,7 @@ body {
 
 .user-information {
   width: em(320);
-  background: #dd4b39;
+  background: #d6614d;
   text-align: center;
   padding: em(20);
 
@@ -118,4 +118,24 @@ body {
     margin: em(5) 0;
     font-size: em(15);
   }
+}
+
+.user-search-people {
+
+  .user-search-people-field {
+    @include border-radius(5px);
+    background: #cb5340;
+    border: 0;
+    color: #fff;
+    padding: em(5) em(10);
+  }
+
+  .user-search-people-submit {
+    @include border-radius(5px);
+    background: #fff;
+    border: 0;
+    color: #d6614d;
+    padding: em(5) em(10);
+  }
+
 }

@@ -17,7 +17,7 @@ var signin = (function() {
   var user_search_people_template = JST[ '_templates/user_search_people' ];
 
   var register_events = function() {
-    $( '.user-search-people-submit' ).on( 'click', search_friends );
+    // $( '.user-search-people-submit' ).on( 'click', search_friends );
   };
 
   var show_box_login = function() {
@@ -38,6 +38,8 @@ var signin = (function() {
       };
 
       $( '.user-information' ).html( user_information_template( data_to_template ) );
+
+      $( '.user-search-people-submit' ).on( 'click', search_friends );
 
     });
 
@@ -114,7 +116,6 @@ var signin = (function() {
           'clientid'              : '850481970795.apps.googleusercontent.com',
           'cookiepolicy'          : 'single_host_origin',
           'requestvisibleactions' : 'http://schemas.google.com/AddActivity',
-          'apppackagename'        : 'com.google.plus',
           'scope'                 : 'https://www.googleapis.com/auth/plus.login'
         });
 
