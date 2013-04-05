@@ -114,6 +114,7 @@ var signin = (function() {
           'clientid'              : '850481970795.apps.googleusercontent.com',
           'cookiepolicy'          : 'single_host_origin',
           'requestvisibleactions' : 'http://schemas.google.com/AddActivity',
+          'apppackagename'        : 'com.google.plus',
           'scope'                 : 'https://www.googleapis.com/auth/plus.login'
         });
 

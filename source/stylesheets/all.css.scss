@@ -86,10 +86,36 @@ body {
 
 .user-information {
   width: em(320);
-  height: em(200);
-  background: #f4f4f4;
+  background: #dd4b39;
+  text-align: center;
+  padding: em(20);
 
-  h1 {
-    margin: 0;
+  .user-information-picture {
+    @include box-shadow(#a73927 0px 1px 3px);
+    @include border-radius(30px);
+    background: #fff;
+    padding: em(3);
+    display: inline-block;
+    overflow: hidden;
+    margin-top: em(10);
+
+    img {
+      @include border-radius(30px);
+      float: left;
+    }
+  }
+
+  .user-information-name {
+    @include text-shadow(#a73927 1px 1px 3px);
+    color: #fff;
+    margin: em(5) 0;
+    font-size: em(25);
+  }
+
+  .user-information-city {
+    @include text-shadow(#a73927 1px 1px 3px);
+    color: #fabeb3;
+    margin: em(5) 0;
+    font-size: em(15);
   }
 }
