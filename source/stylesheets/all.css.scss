@@ -24,6 +24,7 @@ ul {
 
 .section-default {
   padding: em(10) em(20);
+  background: #fff;
 }
 
 .section-title {
@@ -233,4 +234,19 @@ ul {
 
 .share-content {
   display: none;
+}
+
+.share {
+  @extend .section-default;
+
+  .share-title { @extend .section-title; }
+
+  .share-button {
+    @include border-radius(5px);
+    background: #ff0000;
+    color: #fff;
+    padding: em(10) em(15);
+    text-decoration: none;
+    cursor: pointer;
+  }
 }

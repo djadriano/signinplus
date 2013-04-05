@@ -17,7 +17,7 @@ var signin = (function() {
   var user_search_people_template = JST[ '_templates/user_search_people' ];
 
   var register_events = function() {
-    // $( '.user-search-people-submit' ).on( 'click', search_friends );
+    // $( '.share-button' ).on( 'click', share_page );
   };
 
   var show_box_login = function() {
