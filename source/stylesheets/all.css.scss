@@ -127,7 +127,12 @@ body {
     background: #cb5340;
     border: 0;
     color: #fff;
-    padding: em(5) em(10);
+    padding: em(10) em(11);
+
+    &::-webkit-input-placeholder {
+      color: #fff;
+      font-size: em(14);
+    }
   }
 
   .user-search-people-submit {
@@ -135,7 +140,7 @@ body {
     background: #fff;
     border: 0;
     color: #d6614d;
-    padding: em(5) em(10);
+    padding: em(10) em(11);
   }
 
 }
