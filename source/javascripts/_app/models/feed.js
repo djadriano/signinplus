@@ -1,0 +1,3 @@
+FeedModel = Backbone.Model.extend({
+
+});

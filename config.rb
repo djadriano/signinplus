@@ -1,69 +1,49 @@
-###
-# Compass
-###
+# ---------------------------------
+# Paths
+# ---------------------------------
+set :css_dir   , "stylesheets"
+set :js_dir    , "javascripts"
+set :images_dir, "images"
 
-# Susy grids in Compass
-# First: gem install susy
-# require 'susy'
-
-# Change Compass configuration
-# compass_config do |config|
-#   config.output_style = :compact
-# end
-
-###
-# Page options, layouts, aliases and proxies
-###
-
-# Per-page layout changes:
-#
-# With no layout
-# page "/path/to/file.html", :layout => false
-#
-# With alternative layout
-# page "/path/to/file.html", :layout => :otherlayout
-#
-# A path which all have the same layout
-# with_layout :admin do
-#   page "/admin/*"
-# end
-
-# Proxy (fake) files
-# page "/this-page-has-no-template.html", :proxy => "/template-file.html" do
-#   @which_fake_page = "Rendering a fake page with a variable"
-# end
-
-###
-# Helpers
-###
-
-# Automatic image dimensions on image_tag helper
-# activate :automatic_image_sizes
-
-# Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     "Helping"
-#   end
-# end
-
-set :css_dir, 'stylesheets'
-set :js_dir, 'javascripts'
-set :images_dir, 'images'
-
+# ---------------------------------
+# Livereload
+# ---------------------------------
 activate :livereload
 
+# ---------------------------------
+# Helpers
+# ---------------------------------
+helpers do
+  # method for get stylesheets and javascripts of template
+  def path_assets
+    arr_classes = page_classes.split( ' ' )
+
+    if arr_classes.length < 2
+      arr_classes[ 0 ]
+    else
+
+      arr_section = arr_classes[ ( arr_classes.length - 1 ) ].split( '_' )
+      asset_path  = ''
+
+      arr_section.each_with_index do |lista, i|
+        if i == ( arr_section.length - 1 )
+          asset_path = asset_path + lista
+        else
+          asset_path = asset_path + lista + '/'
+        end
+      end
+
+      asset_path
+
+    end
+  end
+end
+
+# ---------------------------------
 # Build-specific configuration
+# ---------------------------------
 configure :build do
-  # For example, change the Compass output style for deployment
   activate :minify_css
-
-  # Minify Javascript on build
   activate :minify_javascript
-
-  # Enable cache buster
-  # activate :cache_buster
-
-  # Use relative URLs
   activate :relative_assets
 end
