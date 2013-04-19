@@ -7,6 +7,7 @@
     <title>Social +</title>
 
     <%= stylesheet_link_tag "all" %>
+    <%= javascript_include_tag  "initialize" %>
   </head>
 
   <body class="<%= page_classes %>">
@@ -19,6 +20,5 @@
        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
      })();
     </script>
-    <%= javascript_include_tag  "initialize" %>
   </body>
 </html>
