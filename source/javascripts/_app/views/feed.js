@@ -2,13 +2,21 @@
 //= require _templates/user_friends
 //= require _templates/user_pages
 //= require _templates/user_search_people
+//= require _templates/user_activities
 
 FeedView = Backbone.View.extend({
+
+  el : '.content',
+
+  events : {
+    'submit .form-search-people' : 'search_people'
+  },
 
   user_information_template   : JST[ '_templates/user_information'   ],
   user_friends_template       : JST[ '_templates/user_friends'       ],
   user_pages_template         : JST[ '_templates/user_pages'         ],
   user_search_people_template : JST[ '_templates/user_search_people' ],
+  user_activities_template    : JST[ '_templates/user_activities'    ],
 
   initialize : function() {
 
@@ -63,7 +71,27 @@ FeedView = Backbone.View.extend({
 
   },
 
+  get_user_activities : function() {
+
+    var self    = this;
+    var request = gapi.client.plus.activities.list({
+      'userId' : 'me',
+      'collection' : 'public'
+    });
+
+    request.execute(function(resp) {
+
+      var data_to_template = resp.items;
+
+      $( '.user-activities' ).html( self.user_activities_template( { data : data_to_template } ) );
+
+    });
+
+  },
+
   search_people : function( evt ) {
+
+    evt.preventDefault();
 
     var search_field = $( '.user-search-people-field' ),
         self = this;
@@ -91,6 +119,7 @@ FeedView = Backbone.View.extend({
 
     this.get_user_data();
     this.get_user_friends();
+    this.get_user_activities();
 
   },
 
