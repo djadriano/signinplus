@@ -3,7 +3,7 @@
 
 SignInView = Backbone.View.extend({
 
-  el : '.box_login',
+  el : '.box-login',
 
   initialize : function() {
     _.bindAll( this, 'show_box_login', 'hide_box_login' );
