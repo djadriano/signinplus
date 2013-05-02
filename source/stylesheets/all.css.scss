@@ -5,14 +5,16 @@
   @return #{$pxval / $base}em;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   background: #e9e9e9;
   font-family: 'Helvetica';
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
 }
 
 * {
@@ -88,12 +90,14 @@ ul {
     color: #fff;
     padding: em(10) em(15);
     cursor: pointer;
-    margin-top: em(10);
-    display: inline-block;
   }
 
   &.not-logged {
-    display: block;
+    display: -webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+    -webkit-box-orient: vertical;
+    height: 100%;
   }
 }
 
