@@ -158,6 +158,7 @@ ul {
     border: 0;
     color: #fff;
     padding: em(10) em(11);
+    width: em(130);
 
     &::-webkit-input-placeholder {
       color: #fff;
@@ -300,11 +301,13 @@ ul {
 
         img {
           @include border-radius(3px);
-          float: left;
           margin-right: em(10);
           max-width: 100%;
-          width: em(100);
-          height: em(100);
+          display: block;
+        }
+
+        figcaption {
+          margin-top: em(20);
         }
       }
     }
