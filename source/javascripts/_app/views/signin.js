@@ -37,7 +37,7 @@ SignInView = Backbone.View.extend({
 
     request.execute();
 
-  }
+  },
 
   button_callback : function( param ) {
 
@@ -47,7 +47,7 @@ SignInView = Backbone.View.extend({
 
     if( param[ 'access_token' ] ) {
       window.feed_view = new FeedView();
-      //this.add_login_activity();
+      this.add_login_activity();
     }
 
   }
