@@ -259,6 +259,7 @@ ul {
     cursor: pointer;
     margin-top: em(5);
     display: inline-block;
+    border: 0;
   }
 
   &.user-logged {
@@ -302,6 +303,8 @@ ul {
           float: left;
           margin-right: em(10);
           max-width: 100%;
+          width: em(100);
+          height: em(100);
         }
       }
     }

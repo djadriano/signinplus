@@ -3,7 +3,7 @@
   <% $.each(data, function( index, item ) { %>
     <li>
       <figure>
-        <a href="<%= item.url %>"><img src="<%= item.image.url %>" alt="<%= item.displayName %>" title="<%= item.displayName %>"></a>
+        <a href="#!/user/<%= item.id %>"><img src="<%= item.image.url %>" alt="<%= item.displayName %>" title="<%= item.displayName %>"></a>
         <figcaption><a href="<%= item.url %>"><%= item.displayName %></a></figcaption>
       </figure>
     </li>

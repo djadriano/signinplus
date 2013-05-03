@@ -130,6 +130,14 @@ FeedView = Backbone.View.extend({
     this.get_user_friends();
     this.get_user_activities();
 
+    gapi.interactivepost.render('share-button', {
+      requestvisibleactions : "http://schemas.google.com/AddActivity",
+      clientid : "850481970795.apps.googleusercontent.com",
+      calltoactionlabel : "INVITE",
+      calltoactionurl : "https://developers.google.com/+/web/share/interactive?invite=true",
+      cookiepolicy : "single_host_origin"
+    });
+
   },
 
   show_user_pages_follow : function( data_to_template ) {
