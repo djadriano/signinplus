@@ -63,11 +63,13 @@ FeedView = Backbone.View.extend({
       if( !resp.hasOwnProperty( 'code' ) ) {
 
         var data_to_template = resp.items;
-        $( '.user-friends' ).append( self.user_friends_template( { data : data_to_template } ) );
+        $( '.user-friends' ).html( self.user_friends_template( { data : data_to_template } ) );
 
         // show the pages that user follow in gplus
         self.show_user_pages_follow( data_to_template );
 
+      } else {
+        $( '.user-friends' ).html( '' );
       }
 
     });
@@ -84,11 +86,13 @@ FeedView = Backbone.View.extend({
 
     request.execute(function(resp) {
 
-      var data_to_template = resp.items;
+      if( resp.hasOwnProperty( 'items' ) ) {
 
-      console.log(data_to_template);
+        var data_to_template = resp.items;
 
-      $( '.user-activities' ).html( self.user_activities_template( { data : data_to_template } ) );
+        $( '.user-activities' ).html( self.user_activities_template( { data : data_to_template } ) );
+
+      }
 
     });
 
@@ -129,7 +133,7 @@ FeedView = Backbone.View.extend({
   },
 
   show_user_pages_follow : function( data_to_template ) {
-    $( '.user-pages' ).append( this.user_pages_template( { data : data_to_template } ) );
+    $( '.user-pages' ).html( this.user_pages_template( { data : data_to_template } ) );
   }
 
 });

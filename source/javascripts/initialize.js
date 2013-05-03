@@ -4,6 +4,7 @@
 //= require _libraries/backbone-min
 
 //= require _app/views/signin
+//= require _app/routes/routes
 
 //= require_self
 
@@ -13,12 +14,8 @@
 
   window.gplus_onload_callback = function() {
 
-    console.log('gplus_onload_callback');
-
     // load the gplus javascript sdk
     gapi.client.load('plus', 'v1', function() {
-
-      console.log('gapi loaded');
 
       // render the sign in button
       gapi.signin.render('signin-button', {
@@ -37,10 +34,6 @@
   }
 
   window.gplus_signin_button_callback = function( param ) {
-
-    // new AppRoutes();
-    // Backbone.history.start();
-
     window.signin_view.button_callback( param );
   }
 
