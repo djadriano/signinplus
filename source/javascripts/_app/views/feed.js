@@ -23,24 +23,23 @@ FeedView = Backbone.View.extend({
     _.bindAll( this, 'get_user_data', 'get_user_friends', 'search_people', 'show_feed_content', 'show_user_pages_follow' );
 
     this.model = new FeedModel();
-    this.listenTo( this.model, 'change:user_id', this.show_feed_content );
 
-    this.show_feed_content();
+    this.listenTo( this.model, 'change:userId', this.show_feed_content );
 
   },
 
   get_user_data : function() {
 
     var self            = this;
-    var request_my_data = gapi.client.plus.people.get( { 'userId' : 'me' } );
+    var request_my_data = gapi.client.plus.people.get( { 'userId' : this.model.get( 'userId' ) } );
 
     request_my_data.execute(function( profile ) {
 
       var data_to_template = {
         name        : profile.displayName,
         photo       : profile.image.url,
-        city        : profile.placesLived[ 0 ].value,
-        url_profile : profile.url
+        city        : '',
+        url_profile : ''
       };
 
       $( '.user-information' ).html( self.user_information_template( data_to_template ) );
@@ -55,17 +54,21 @@ FeedView = Backbone.View.extend({
 
     var self    = this;
     var request = gapi.client.plus.people.list({
-      'userId'     : 'me',
+      'userId'     : this.model.get( 'userId' ),
       'collection' : 'visible'
     });
 
     request.execute(function( resp ) {
 
-      var data_to_template = resp.items;
-      $( '.user-friends' ).append( self.user_friends_template( { data : data_to_template } ) );
+      if( !resp.hasOwnProperty( 'code' ) ) {
 
-      // show the pages that user follow in gplus
-      self.show_user_pages_follow( data_to_template );
+        var data_to_template = resp.items;
+        $( '.user-friends' ).append( self.user_friends_template( { data : data_to_template } ) );
+
+        // show the pages that user follow in gplus
+        self.show_user_pages_follow( data_to_template );
+
+      }
 
     });
 
@@ -75,13 +78,15 @@ FeedView = Backbone.View.extend({
 
     var self    = this;
     var request = gapi.client.plus.activities.list({
-      'userId' : 'me',
+      'userId'     : this.model.get( 'userId' ),
       'collection' : 'public'
     });
 
     request.execute(function(resp) {
 
       var data_to_template = resp.items;
+
+      console.log(data_to_template);
 
       $( '.user-activities' ).html( self.user_activities_template( { data : data_to_template } ) );
 
@@ -115,7 +120,7 @@ FeedView = Backbone.View.extend({
     $( '.user' ).addClass( 'user-logged' );
     $( '.share' ).addClass( 'user-logged' );
 
-    signin_view.hide_box_login();
+    window.signin_view.hide_box_login();
 
     this.get_user_data();
     this.get_user_friends();

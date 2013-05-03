@@ -1,3 +1,1 @@
-FeedModel = Backbone.Model.extend({
-
-});
+FeedModel = Backbone.Model.extend({});

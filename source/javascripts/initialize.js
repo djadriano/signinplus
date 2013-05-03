@@ -3,12 +3,12 @@
 //= require _libraries/json2
 //= require _libraries/backbone-min
 
-//= require _app/routes/routes
 //= require _app/views/signin
+//= require _app/routes/routes
 
 //= require_self
 
-;(function( window ) {
+$(function() {
 
   'use strict'
 
@@ -26,12 +26,12 @@
         'scope'                 : 'https://www.googleapis.com/auth/plus.login'
       });
 
+      window.signin_view = new SignInView();
+
+      new AppRoutes();
+      Backbone.history.start();
+
     });
-
-    window.signin_view = new SignInView();
-
-    new AppRoutes();
-    Backbone.history.start();
 
   }
 
@@ -39,4 +39,4 @@
     signin_view.button_callback( param );
   }
 
-})( window );
+});

@@ -10,7 +10,9 @@
         $.each(item.object.attachments, function( counter, attach_item ) {
       %>
         <figure>
-          <img src="<%= attach_item.image.url %>" alt="">
+          <% if( attach_item.hasOwnProperty( 'image' ) ) { %>
+            <img src="<%= attach_item.image.url %>" alt="">
+          <% } %>
           <figcaption><%= attach_item.content %></figcaption>
         </figure>
       <%
