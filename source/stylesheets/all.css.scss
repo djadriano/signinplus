@@ -250,22 +250,20 @@ ul {
 
   .share-title { @extend .section-title; }
 
-  .share-button {
+  #share-button {
     @include border-radius(5px);
     background: #ff0000;
     color: #fff;
     padding: em(10) em(15);
     text-decoration: none;
     cursor: pointer;
+    margin-top: em(5);
+    display: inline-block;
   }
 
   &.user-logged {
     display: block;
   }
-}
-
-.share-content {
-  display: none;
 }
 
 .user-activities {
