@@ -6,9 +6,11 @@ AppRoutes = Backbone.Router.extend({
 
   user_feed : function( id ) {
 
-    window.feed_view ? window.feed_view = window.feed_view : window.feed_view = new FeedView();
+    console.log(window.feed_view);
 
-    window.feed_view.model.set({ userId : id });
+    // window.feed_view ? window.feed_view = window.feed_view : window.feed_view = new FeedView();
+
+    // window.feed_view.model.set({ userId : id });
 
   }
 

@@ -7,6 +7,7 @@ SignInView = Backbone.View.extend({
 
   initialize : function() {
     _.bindAll( this, 'show_box_login', 'hide_box_login' );
+    console.log('SignInView initialize');
   },
 
   show_box_login : function() {
@@ -18,6 +19,8 @@ SignInView = Backbone.View.extend({
   },
 
   button_callback : function( param ) {
+
+    console.log('button_callback');
 
     if( param[ 'error' ] ) {
       this.show_box_login();
