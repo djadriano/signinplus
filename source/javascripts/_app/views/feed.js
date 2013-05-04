@@ -1,6 +1,6 @@
+//= require _app/views/friends
+
 //= require _templates/user_information
-//= require _templates/user_friends
-//= require _templates/user_pages
 //= require _templates/user_search_people
 //= require _templates/user_activities
 
@@ -13,14 +13,12 @@ FeedView = Backbone.View.extend({
   },
 
   user_information_template   : JST[ '_templates/user_information'   ],
-  user_friends_template       : JST[ '_templates/user_friends'       ],
-  user_pages_template         : JST[ '_templates/user_pages'         ],
   user_search_people_template : JST[ '_templates/user_search_people' ],
   user_activities_template    : JST[ '_templates/user_activities'    ],
 
   initialize : function() {
 
-    _.bindAll( this, 'get_user_data', 'get_user_friends', 'search_people', 'show_feed_content', 'show_user_pages_follow' );
+    _.bindAll( this, 'get_user_data', 'get_user_friends', 'search_people', 'show_feed_content' );
 
     this.model = new FeedModel();
 
@@ -52,27 +50,9 @@ FeedView = Backbone.View.extend({
 
   get_user_friends : function() {
 
-    var self    = this;
-    var request = gapi.client.plus.people.list({
-      'userId'     : this.model.get( 'userId' ),
-      'collection' : 'visible'
-    });
+    window.friends_view ? window.friends_view = window.friends_view : window.friends_view = new FriendsView();
 
-    request.execute(function( resp ) {
-
-      if( !resp.hasOwnProperty( 'code' ) ) {
-
-        var data_to_template = resp.items;
-        $( '.user-friends' ).html( self.user_friends_template( { data : data_to_template } ) );
-
-        // show the pages that user follow in gplus
-        self.show_user_pages_follow( data_to_template );
-
-      } else {
-        $( '.user-friends' ).html( '' );
-      }
-
-    });
+    friends_view.model.set({ userId : this.model.get( 'userId' ) });
 
   },
 
@@ -130,10 +110,6 @@ FeedView = Backbone.View.extend({
     this.get_user_friends();
     this.get_user_activities();
 
-  },
-
-  show_user_pages_follow : function( data_to_template ) {
-    $( '.user-pages' ).html( this.user_pages_template( { data : data_to_template } ) );
   }
 
 });
