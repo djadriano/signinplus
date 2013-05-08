@@ -1,7 +1,7 @@
+//= require _app/views/search
 //= require _app/views/friends
 
 //= require _templates/user_information
-//= require _templates/user_search_people
 //= require _templates/user_activities
 
 FeedView = Backbone.View.extend({
@@ -12,9 +12,8 @@ FeedView = Backbone.View.extend({
     'submit .form-search-people' : 'search_people'
   },
 
-  user_information_template   : JST[ '_templates/user_information'   ],
-  user_search_people_template : JST[ '_templates/user_search_people' ],
-  user_activities_template    : JST[ '_templates/user_activities'    ],
+  user_information_template  : JST[ '_templates/user_information' ],
+  user_activities_template   : JST[ '_templates/user_activities'  ],
 
   initialize : function() {
 
@@ -82,27 +81,20 @@ FeedView = Backbone.View.extend({
 
     evt.preventDefault();
 
-    var search_field = $( '.user-search-people-field' ),
-        self = this;
+    var search_field = this.$el.find( '.user-search-people-field' );
 
-    var request = gapi.client.plus.people.search({
-      'query' : search_field.val()
-    });
+    window.search_view ? window.search_view = window.search_view : window.search_view = new SearchView();
 
-    request.execute(function( resp ) {
-
-      var data_to_template = resp.items;
-
-      $( '.user-search-people-result' ).html( self.user_search_people_template( { data : data_to_template } ) );
-
-    });
+    if( search_field.val() !== '' ) {
+      search_view.model.set({ search_value : search_field.val() });
+    }
 
   },
 
   show_feed_content : function() {
 
-    $( '.user' ).addClass( 'user-logged' );
-    $( '.share' ).addClass( 'user-logged' );
+    this.$el.find( '.user' ).addClass( 'user-logged' );
+    this.$el.find( '.share' ).addClass( 'user-logged' );
 
     window.signin_view.hide_box_login();
 
