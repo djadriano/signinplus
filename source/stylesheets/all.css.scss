@@ -1,6 +1,10 @@
 @import 'compass';
 @import 'normalize';
 
+@include font-face("fontello", font-files("/fonts/fontello.woff", "/fonts/fontello.ttf", "/fonts/fontello.svg#fontello"));
+
+@charset "UTF-8";
+
 @function em($pxval, $base: 16) {
   @return #{$pxval / $base}em;
 }
@@ -21,10 +25,36 @@ body {
   @include box-sizing(border-box);
 }
 
+[class*="icon-"] {
+  font-family: 'fontello';
+  display: inline-block;
+  font-style: normal;
+
+  &:before {
+    margin-right: em(5);
+  }
+}
+
+.icon-retweet:before { content: '\e045'; } /* '' */
+.icon-location:before { content: '\e724'; } /* '' */
+.icon-doc-alt:before { content: '\e732'; } /* '' */
+.icon-comment-empty:before { content: '\f0e5'; } /* '' */
+.icon-gplus:before { content: '\f30f'; } /* '' */
+.icon-users-1:before { content: '\e800'; } /* '' */
+.icon-search:before { content: '\1f50d'; } /* '\1f50d' */
+
 ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.show-section {
+  display: block !important;
+}
+
+.hide-section {
+  display: none !important;
 }
 
 .section-default {
@@ -209,6 +239,7 @@ ul {
 
 .user-search-people-result {
   @extend .section-default;
+  display: none;
 
   .user-search-people-result-title { @extend .section-title; }
 

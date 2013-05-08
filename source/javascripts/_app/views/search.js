@@ -10,11 +10,11 @@ SearchView = Backbone.View.extend({
   initialize : function() {
 
     this.model = new SearchModel();
-    this.listenTo( this.model, 'change:search_value', this.render );
+    this.listenTo( this.model, 'change:search_value', this.show_results );
 
   },
 
-  render : function() {
+  show_results : function() {
 
     var self    = this;
     var request = gapi.client.plus.people.search({
@@ -25,10 +25,14 @@ SearchView = Backbone.View.extend({
 
       var data_to_template = resp.items;
 
-      self.$el.html( self.user_search_people_template( { data : data_to_template } ) );
+      self.$el.html( self.user_search_people_template( { data : data_to_template } ) ).addClass( 'show-section' );
 
     });
 
+  },
+
+  hide_results : function() {
+    this.$el.removeClass( 'show-section' );
   }
 
 });

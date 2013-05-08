@@ -30,11 +30,10 @@
 
     });
 
-
   }
 
   window.gplus_signin_button_callback = function( param ) {
-    window.signin_view.button_callback( param );
+    signin_view.button_callback( param );
   }
 
 })( window );

@@ -1,0 +1,1 @@
+UserActivitiesModel = Backbone.Model.extend({});

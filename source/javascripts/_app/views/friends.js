@@ -20,8 +20,7 @@ FriendsView = Backbone.View.extend({
 
   render : function() {
 
-    var self = this;
-
+    var self    = this;
     var request = gapi.client.plus.people.list({
       'userId'     : this.model.get( 'userId' ),
       'collection' : 'visible'
@@ -29,17 +28,18 @@ FriendsView = Backbone.View.extend({
 
     request.execute(function( resp ) {
 
+      var data_to_template = resp.items;
+
       if( !resp.hasOwnProperty( 'code' ) ) {
 
-        var data_to_template = resp.items;
-
-        self.$el.html( self.user_friends_template( { data : data_to_template } ) );
-
-        // show the pages that user follow in gplus
+        self.$el.html( self.user_friends_template( { data : data_to_template } ) ).removeClass( 'hide-section' );
         self.show_user_pages_follow( data_to_template );
 
       } else {
-        self.$el.html( '' );
+
+        self.$el.addClass( 'hide-section' );
+        $( '.user-pages' ).addClass( 'hide-section' );
+
       }
 
     });
@@ -47,7 +47,7 @@ FriendsView = Backbone.View.extend({
   },
 
   show_user_pages_follow : function( data_to_template ) {
-    $( '.user-pages' ).html( this.user_pages_template( { data : data_to_template } ) );
+    $( '.user-pages' ).html( this.user_pages_template( { data : data_to_template } ) ).removeClass( 'hide-section' );
   }
 
 });

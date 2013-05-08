@@ -2,14 +2,16 @@
   <img src="<%= photo %>" alt="">
 </figure>
 <h1 class="user-information-name"><%= name %></h1>
-<p class="user-information-city">
-  <%= city %>
-</p>
+<% if( city ) { %>
+  <p class="user-information-city icon-location">
+    <%= city %>
+  </p>
+<% } %>
 <div class="user-search-people">
   <p>
     <form action="#" method="post" class="form-search-people">
       <input type="search" class="user-search-people-field" placeholder="Type something..." required="required">
-      <button type="submit" class="user-search-people-submit">Search</button>
+      <button type="submit" class="user-search-people-submit icon-search">Search</button>
     </form>
   </p>
 </div>

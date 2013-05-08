@@ -10,11 +10,11 @@ AppRoutes = Backbone.Router.extend({
   },
 
   feed : function() {
-    window.feed_view.model.set({ userId : 'me' });
+    feed_view.model.set({ userId : 'me' });
   },
 
   user_feed : function( id ) {
-    window.feed_view.model.set({ userId : id });
+    feed_view.model.set({ userId : id });
   }
 
 });
