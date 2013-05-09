@@ -12,6 +12,7 @@ AppRoutes = Backbone.Router.extend({
 
   feed : function() {
     feed_view.model.set({ userId : 'me' });
+    search_view.model.clear();
   },
 
   user_feed : function( id ) {
