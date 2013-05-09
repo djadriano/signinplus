@@ -25,12 +25,12 @@ UserActivitiesView = Backbone.View.extend({
     request.execute(function(resp) {
 
       if( resp.hasOwnProperty( 'items' ) ) {
-
         var data_to_template = resp.items;
-
-        self.$el.html( self.user_activities_template( { data : data_to_template } ) );
-
+      } else {
+        var data_to_template = '';
       }
+
+      self.$el.html( self.user_activities_template( { data : data_to_template } ) );
 
     });
 

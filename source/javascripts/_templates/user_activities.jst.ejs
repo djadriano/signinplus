@@ -1,31 +1,35 @@
 <h1 class="user-activities-title icon-comment-empty">Public Activities:</h1>
-<ul class="user-activities-list">
-  <%
-  $.each(data, function( index, item ) {
-  %>
-    <li>
-      <h1><%= item.object.content %></h1>
-      <%
-      if( item.object.attachments ) {
-        $.each(item.object.attachments, function( counter, attach_item ) {
-      %>
-        <figure>
-          <% if( attach_item.hasOwnProperty( 'image' ) ) { %>
-            <img src="<%= attach_item.image.url %>" alt="">
-          <% } %>
-          <figcaption><%= attach_item.content %></figcaption>
-        </figure>
-      <%
-        });
-      }
-      %>
-      <p>
-        <b>Plus One:</b> <%= item.object.plusoners.totalItems %><br>
-        <b>Replies:</b> <%= item.object.replies.totalItems %><br>
-        <b>Shares:</b> <%= item.object.resharers.totalItems %><br>
-      </p>
-    </li>
-  <%
-  });
-  %>
-</ul>
+<% if( data ) { %>
+  <ul class="user-activities-list">
+    <%
+    $.each(data, function( index, item ) {
+    %>
+      <li>
+        <h1><%= item.object.content %></h1>
+        <%
+        if( item.object.attachments ) {
+          $.each(item.object.attachments, function( counter, attach_item ) {
+        %>
+          <figure>
+            <% if( attach_item.hasOwnProperty( 'image' ) ) { %>
+              <img src="<%= attach_item.image.url %>" alt="">
+            <% } %>
+            <figcaption><%= attach_item.content %></figcaption>
+          </figure>
+        <%
+          });
+        }
+        %>
+        <p>
+          <b>Plus One:</b> <%= item.object.plusoners.totalItems %><br>
+          <b>Replies:</b> <%= item.object.replies.totalItems %><br>
+          <b>Shares:</b> <%= item.object.resharers.totalItems %><br>
+        </p>
+      </li>
+    <%
+    });
+    %>
+  </ul>
+<% } else { %>
+  <p>The user don't have public activities!</p>
+<% } %>

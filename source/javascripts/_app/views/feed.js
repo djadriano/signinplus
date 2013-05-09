@@ -66,7 +66,7 @@ FeedView = Backbone.View.extend({
     var search_field = this.$el.find( '.user-search-people-field' );
 
     if( search_field.val() !== '' ) {
-      search_view.model.set({ search_value : search_field.val() });
+      routes.navigate( "!/search/" + search_field.val(), { trigger: true } );
     }
 
   },
