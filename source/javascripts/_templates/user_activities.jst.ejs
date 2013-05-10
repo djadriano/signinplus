@@ -20,10 +20,10 @@
           });
         }
         %>
-        <p>
-          <b>Plus One:</b> <%= item.object.plusoners.totalItems %><br>
-          <b>Replies:</b> <%= item.object.replies.totalItems %><br>
-          <b>Shares:</b> <%= item.object.resharers.totalItems %><br>
+        <ul class="user-activities-list-infos">
+          <li><b class="icon-gplus"></b><%= item.object.plusoners.totalItems %></li>
+          <li><b class="icon-retweet"></b><%= item.object.replies.totalItems %></li>
+          <li><b class="icon-upload-cloud"></b><%= item.object.resharers.totalItems %></li>
         </p>
       </li>
     <%
