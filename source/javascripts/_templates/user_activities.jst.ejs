@@ -5,6 +5,11 @@
   %>
     <li>
       <h1><%= item.object.content %></h1>
+      <ul class="user-activities-list-infos">
+        <li><b class="icon-gplus"></b><%= item.object.plusoners.totalItems %></li>
+        <li><b class="icon-retweet"></b><%= item.object.replies.totalItems %></li>
+        <li><b class="icon-upload-cloud"></b><%= item.object.resharers.totalItems %></li>
+      </ul>
       <%
       if( item.object.attachments ) {
         $.each(item.object.attachments, function( counter, attach_item ) {
@@ -19,11 +24,6 @@
         });
       }
       %>
-      <p>
-        <b>Plus One:</b> <%= item.object.plusoners.totalItems %><br>
-        <b>Replies:</b> <%= item.object.replies.totalItems %><br>
-        <b>Shares:</b> <%= item.object.resharers.totalItems %><br>
-      </p>
     </li>
   <%
   });

@@ -35,11 +35,14 @@ body {
   }
 }
 
+.icon-mail:before { content: '\2709'; } /* '✉' */
 .icon-retweet:before { content: '\e045'; } /* '' */
+.icon-upload-cloud:before { content: '\e711'; } /* '' */
 .icon-location:before { content: '\e724'; } /* '' */
 .icon-doc-alt:before { content: '\e732'; } /* '' */
 .icon-comment-empty:before { content: '\f0e5'; } /* '' */
 .icon-gplus:before { content: '\f30f'; } /* '' */
+.icon-thumbs-up:before { content: '👍'; } /* '\1f44d' */
 .icon-users-1:before { content: '\e800'; } /* '' */
 .icon-search:before { content: '🔍'; } /* '\1f50d' */
 
@@ -60,7 +63,7 @@ ul {
 .section-default {
   padding: em(10) em(20);
   background: #fff;
-  color: #999;
+  color: #666;
 
   a {
     color: #666;
@@ -305,9 +308,9 @@ ul {
   .user-activities-title { @extend .section-title; }
 
   .user-activities-list {
-    li {
+    > li {
       @include border-radius(5px);
-      border: 1px solid #e9e9e9;
+      border: 1px solid #dcdcdc;
       padding: em(20);
       margin-bottom: em(20);
 
@@ -325,8 +328,8 @@ ul {
       }
 
       figure {
-        padding-top: em(10);
-        border-top: 1px solid #e9e9e9;
+        padding-top: em(20);
+        border-top: 1px solid #dcdcdc;
         margin-top: em(10);
         overflow: hidden;
 
@@ -339,6 +342,19 @@ ul {
 
         figcaption {
           margin-top: em(20);
+        }
+      }
+    }
+
+    .user-activities-list-infos {
+      margin-top: em(15);
+
+      > li {
+        display: inline-block;
+        margin-right: em(5);
+
+        [class*="icon-"] {
+          color: #d6614d;
         }
       }
     }
