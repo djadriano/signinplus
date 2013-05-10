@@ -315,7 +315,7 @@ ul {
       margin-bottom: em(20);
 
       h1 {
-        margin: 0;
+        margin: 0 0 em(15) 0;
         width: 100%;
         font-size: em(18);
         color: #d6614d;
@@ -347,8 +347,6 @@ ul {
     }
 
     .user-activities-list-infos {
-      margin-top: em(15);
-
       > li {
         display: inline-block;
         margin-right: em(5);
