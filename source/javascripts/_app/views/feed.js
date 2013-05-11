@@ -47,23 +47,18 @@ FeedView = Backbone.View.extend({
 
       self.$el.find( '.user-search-people-submit' ).on( 'click', self.search_people );
 
-      var momentWithoutUrl = {
-        'type' : 'http://schemas.google.com/AddActivity',
-        'target' : {
-          'id' : 'a-unique-id-1',
-          'name' : 'I see the ' + profile.displayName + ' profile',
-          'description' : 'Hello!',
-          'image' : 'http://www.insidemobileapps.com/wp-content/uploads/2013/02/google-plus-app-icon.jpeg'
+      // add app moments (activities)
+      app_activities.set({
+        content : {
+          'type'   : 'http://schemas.google.com/AddActivity',
+          'target' : {
+            'id'          : 'a-unique-id-1',
+            'name'        : 'I see the ' + profile.displayName + ' profile',
+            'description' : 'Hello!',
+            'image'       : 'http://www.insidemobileapps.com/wp-content/uploads/2013/02/google-plus-app-icon.jpeg'
+          }
         }
-      };
-
-      var request = gapi.client.request({
-        'path'   : 'plus/v1/people/me/moments/vault',
-        'method' : 'POST',
-        'body'   : JSON.stringify(momentWithoutUrl)
       });
-
-      request.execute();
 
     });
 
@@ -85,24 +80,18 @@ FeedView = Backbone.View.extend({
 
     if( search_field.val() !== '' ) {
 
-      // add activity
-      var momentWithoutUrl = {
-        'type' : 'http://schemas.google.com/AddActivity',
-        'target' : {
-          'id' : 'a-unique-id-1',
-          'name' : 'I made search for: ' + search_field.val(),
-          'description' : 'Yeah baby, Im search!',
-          'image' : 'http://www.insidemobileapps.com/wp-content/uploads/2013/02/google-plus-app-icon.jpeg'
+      // add app moments (activities)
+      app_activities.set({
+        content : {
+          'type'   : 'http://schemas.google.com/AddActivity',
+          'target' : {
+            'id'          : 'a-unique-id-1',
+            'name'        : 'I made search for: ' + search_field.val(),
+            'description' : 'Yeah baby, Im search!',
+            'image'       : 'http://www.insidemobileapps.com/wp-content/uploads/2013/02/google-plus-app-icon.jpeg'
+          }
         }
-      };
-
-      var request = gapi.client.request({
-        'path'   : 'plus/v1/people/me/moments/vault',
-        'method' : 'POST',
-        'body'   : JSON.stringify(momentWithoutUrl)
       });
-
-      request.execute();
 
       routes.navigate( "!/search/" + search_field.val(), { trigger: true } );
 

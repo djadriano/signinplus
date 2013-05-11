@@ -3,6 +3,7 @@
 //= require _libraries/json2
 //= require _libraries/backbone-min
 
+//= require _app/models/activities
 //= require _app/views/signin
 //= require _app/routes/routes
 
@@ -26,7 +27,8 @@
         'scope'                 : 'https://www.googleapis.com/auth/plus.login'
       });
 
-      window.signin_view = new SignInView();
+      window.app_activities = new ActivitiesModel();
+      window.signin_view    = new SignInView();
 
     });
 
