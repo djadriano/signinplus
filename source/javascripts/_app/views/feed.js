@@ -60,6 +60,17 @@ FeedView = Backbone.View.extend({
         }
       });
 
+      app_activities.add();
+
+      var request_moments = gapi.client.plus.moments.list({
+        'userId'     : 'me',
+        'collection' : 'vault'
+      });
+
+      request_moments.execute(function(resp) {
+        console.log(resp.items.length);
+      });
+
     });
 
   },
@@ -92,6 +103,8 @@ FeedView = Backbone.View.extend({
           }
         }
       });
+
+      app_activities.add();
 
       routes.navigate( "!/search/" + search_field.val(), { trigger: true } );
 

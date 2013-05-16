@@ -4,10 +4,6 @@ ActivitiesModel = Backbone.Model.extend({
     content : {}
   },
 
-  initialize : function() {
-    this.on( 'change:content', this.add );
-  },
-
   add : function() {
 
     var self = this;

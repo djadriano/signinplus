@@ -38,6 +38,8 @@ SignInView = Backbone.View.extend({
         }
       });
 
+      app_activities.add();
+
       window.routes ? window.routes = window.routes : window.routes = new AppRoutes( window );
       Backbone.history.start();
     }
